@@ -2,6 +2,11 @@
 using namespace std;
 
 int main(){
-    cout << 1234%10 << endl;
+    double* p; 
+    double j = 3;
+    p = &j;
+    cout<< "Value of p "<<*p<<endl;
+    cout<< "Address of &p "<<&p<<endl;
+    cout<< "Value of p size "<<sizeof p<<endl;
     return 0;
 }
