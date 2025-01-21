@@ -51,6 +51,23 @@ public:
 // Static vector initialization
 vector<int> Movie::views;
 
+Movie makeMovie(vector<Movie> vec){
+    string name;
+    string rating;
+    cout<<"Enter the name of the movie."<<endl;
+    getline(cin,name);
+    cout<<"Enter the rating of the movie."<<endl;
+    getline(cin,rating);
+    //Check if it's a duplicate
+    for(auto e:vec){
+        if( e.getName() == name){
+            cout<<"Movie cannot be added. There is already an excisitng movie with the same name. Please try again."<<endl;
+        }else{
+            return Movie(name,rating);
+        }
+    }
+}
+
 int main() {
     // Movies
     Movie movie1("Inception", "PG-13");
@@ -59,6 +76,9 @@ int main() {
 
     // Movie vector
     vector<Movie> movies = {movie1, movie2, movie3};
+
+    Movie movie4 = makeMovie(movies);
+    movies.push_back(movie4);
 
     // Increment views and print details
     for (int i = 0; i < movies.size(); i++) {
