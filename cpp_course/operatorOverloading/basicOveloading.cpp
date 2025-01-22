@@ -64,6 +64,28 @@ class Mystring{
             return temp;
 
         }
+        Mystring operator+=(const Mystring &obj){
+            char* buff = new char[strlen(this->str)+strlen(obj.str)+1];
+            strcpy(buff,this->str);
+            strcat(buff,obj.str);
+            delete [] this->str;
+            this->str = buff;
+            return *this;
+
+        }
+        Mystring operator*(const int num){
+            if (num <= 0) {
+                return Mystring{""}; 
+            }
+            char* buff = new char[strlen(this->str)*num+1];
+            strcpy(buff,this->str);
+            for(size_t i; i<num-1;i++){
+                strcat(buff,this->str);
+            }
+            Mystring temp{buff};
+            delete [] buff;
+            return temp;
+        }
         
         void display(){
             cout<< str<<endl;
@@ -79,12 +101,16 @@ int main(){
     Mystring alfredoMartini{"Alfredo"};
     cout << (alfredo == alfredoMartini) << endl;
     alfredo.display();
-    // alfredo = -alfredo;
-    // alfredo.display();
+    alfredo = -alfredo;
+    alfredo.display();
     Mystring bob;
     cout<<"Enter a string for the object bob:"<<endl;
     cin >> bob;
-    cout<<"Bob has entered the game "<<bob<<endl;
+    cout<<bob<<" has entered the game"<<endl;
+    bob += alberto;
+    bob.display();
+    Mystring bobei = bob * 3;
+    bobei.display();
     return 0;
 }
 
