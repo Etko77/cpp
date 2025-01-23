@@ -79,12 +79,36 @@ class Mystring{
             }
             char* buff = new char[strlen(this->str)*num+1];
             strcpy(buff,this->str);
-            for(size_t i; i<num-1;i++){
+            for(size_t i = 0; i<(num-1);i++){
                 strcat(buff,this->str);
             }
             Mystring temp{buff};
             delete [] buff;
             return temp;
+        }
+        Mystring operator*=(const int num){
+            char* buff = new char[strlen(this->str)*num+1];
+            strcpy(buff,this->str);
+            for(size_t i = 0; i < (num-1);i++){
+                strcat(buff,this->str);
+            }
+            delete [] this->str;
+            this->str = buff;
+            return *this;
+        }
+        bool operator>(const Mystring &rso){
+            if(strlen(this->str)>strlen(rso.str)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        bool operator<(const Mystring &rso){
+            if(strlen(this->str)<strlen(rso.str)){
+                return true;
+            }else{
+                return false;
+            }
         }
         
         void display(){
@@ -99,18 +123,28 @@ int main(){
     Mystring alfredo{"Alfredo"};
     Mystring alberto{"Alberto"};
     Mystring alfredoMartini{"Alfredo"};
+    //Checking == operator manipulation
     cout << (alfredo == alfredoMartini) << endl;
     alfredo.display();
+    //checking operator - manipulation
     alfredo = -alfredo;
     alfredo.display();
     Mystring bob;
+    //Checking insertion and extraction operator manipulation
     cout<<"Enter a string for the object bob:"<<endl;
     cin >> bob;
     cout<<bob<<" has entered the game"<<endl;
+    //Checking operator+= manipulation
     bob += alberto;
     bob.display();
+    //Checking operator* manipulation
     Mystring bobei = bob * 3;
     bobei.display();
+    //Checking operator *= manipulation
+    alfredo *=3;
+    alfredo.display();
+    cout<<"ALfredo greater than Etienne"<<(alfredo>bobei)<<endl;
+    cout<<"ALfredo lesser than Etienne"<<(alfredo<bobei)<<endl;
     return 0;
 }
 
