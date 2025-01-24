@@ -143,8 +143,8 @@ int main(){
     //Checking operator *= manipulation
     alfredo *=3;
     alfredo.display();
-    cout<<"ALfredo greater than Etienne"<<(alfredo>bobei)<<endl;
-    cout<<"ALfredo lesser than Etienne"<<(alfredo<bobei)<<endl;
+    cout<<"ALfredo greater than Etienne: "<<(alfredo>bobei)<<endl;
+    cout<<"ALfredo lesser than Etienne: "<<(alfredo<bobei)<<endl;
     return 0;
 }
 
